@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>ru.examples</groupId>
+    <artifactId>test-data-generator</artifactId>
+    <packaging>pom</packaging>
+    <version>0.0.1</version>
+
+    <developers>
+        <developer>
+            <id>dm_aq</id>
+            <name>Dmitrii Bychkov</name>
+        </developer>
+    </developers>
+
+    <properties>
+        <junit.version>4.12</junit.version>
+        <java.version>1.8</java.version>
+        <compiler.plugin.version>3.8.0</compiler.plugin.version>
+        <shade.plugin.version>3.2.1</shade.plugin.version>
+        <dependency.plugin.version>3.1.1</dependency.plugin.version>
+        <resources.plugin.version>3.1.0</resources.plugin.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${compiler.plugin.version}</version>
+                    <configuration>
+                        <source>${java.version}</source>
+                        <target>${java.version}</target>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-shade-plugin</artifactId>
+                    <version>${shade.plugin.version}</version>
+                    <executions>
+                        <execution>
+                            <phase>package</phase>
+                            <goals>
+                                <goal>shade</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+    <modules>
+        <module>operations-generator</module>
+        <module>operations-statistic</module>
+    </modules>
+
+
+</project>
